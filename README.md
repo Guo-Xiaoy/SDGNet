@@ -6,6 +6,7 @@
 This repository contains the official PyTorch implementation of **SDGNet**.
 
 > **📢 Note:** The pre-trained models and full model resources will be made publicly available upon the acceptance of the paper.
+**📢 Update:** To facilitate reproducibility during the review process, we have released the **pre-trained checkpoints** and a **minimal runnable demo (`demo-T.py`)** for immediate verification.
 
 **SDGNet** is a high-precision point cloud registration framework tailored for **industrial 3D measurement** and **robot hand-eye calibration** scenarios. Unlike general-purpose registration methods that prioritize video-rate speed, SDGNet is engineered to maximize **geometric accuracy** and **edge preservation** under the "stop-and-measure" operational mode typical in industrial automation.
 
@@ -29,8 +30,7 @@ By integrating **Beltrami Diffusion** with **Curve-based Serialization**, our fr
 
 * Python 3.x
 * PyTorch (CUDA support required)
-* `torch-geometric`, `torch-scatter`, `torch-sparse` (Must match your CUDA/PyTorch versions)
-* Other dependencies listed in `requirementlist.txt`
+* **Important:** Please ensure `torch-scatter`, `torch-sparse`, and `flash-attn` are installed correctly for your specific CUDA version.
 
 ### Installation
 
@@ -39,9 +39,12 @@ By integrating **Beltrami Diffusion** with **Curve-based Serialization**, our fr
     pip install -r requirementlist.txt
     ```
 
-2.  **Compile C++ Extensions:**
+2.  **Build C++ extensions in `cpp_wrappers/`:**
     (Required for radius neighbors search and subsampling)
     ```bash
+    cd cpp_wrappers/cpp_neighbors
+    python setup.py build_ext --inplace
+    cd ../cpp_subsampling
     python setup.py build_ext --inplace
     ```
 
@@ -55,6 +58,8 @@ By integrating **Beltrami Diffusion** with **Curve-based Serialization**, our fr
 * `cpp_wrappers/`: C++ CUDA extensions.
 * `0_train.py`: Main entry point for training.
 * `_1_test.py`: Main entry point for evaluation/testing.
+* `MAE_RMSE.py`: Main evaluation script that computes the MAE/RMSE metrics reported in the paper.
+* `demo-T.py`: One-line demo script for quick verification on a single test case.
 * `benchmark.py`: Script for evaluating model parameters and inference latency.
 
 ## 🚀 Quick Start
@@ -62,7 +67,9 @@ By integrating **Beltrami Diffusion** with **Curve-based Serialization**, our fr
 ### 1. Data Preparation
 Modify the dataset paths in the configuration file. By default, the system uses `configs/customdata.yaml`.
 
-### 2. Training
+### 2. Training and Verification (Minimal Demo)
 To train the model from scratch:
 ```bash
 python 0_train.py
+
+python demo-T.py
