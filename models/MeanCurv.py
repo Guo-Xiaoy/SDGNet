@@ -146,7 +146,12 @@ class ODEFuncTransformerAtt(ODEFunc):
         rowsum_norm = 1
         if rowsum_norm:
             #Da = torch.diag(grad_x_norm_inv)
-            W = torch.sparse.FloatTensor(self.edge_index, new_attn, (x.shape[0], x.shape[0])).coalesce()
+            W = torch.sparse_coo_tensor(
+                self.edge_index,
+                new_attn,
+                (x.shape[0], x.shape[0]),
+                device=x.device,
+            ).coalesce()
             rowsum = torch.sparse.mm(W, torch.ones((W.shape[0], 1), device=device)).flatten()
             
             ni = torch.arange(x.shape[0])

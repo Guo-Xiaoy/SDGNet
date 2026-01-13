@@ -172,7 +172,7 @@ class LocalFeatureFused(nn.Module):
             self.blocks.add_module(f'conv2d_{i}',
                                    nn.Conv2d(in_dim, out_dim, 1, bias=False))
             self.blocks.add_module(f'in_{i}',
-                                   nn.InstanceNorm2d(out_dims))
+                                   nn.InstanceNorm2d(out_dim))
             self.blocks.add_module(f'relu_{i}', nn.ReLU(inplace=True))
             in_dim = out_dim
 

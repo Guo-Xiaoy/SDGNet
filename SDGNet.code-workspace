@@ -1,0 +1,11 @@
+{
+	"folders": [
+		{
+			"path": "."
+		},
+		{
+			"path": "../6_SDGCNet_all/train_logs"
+		}
+	],
+	"settings": {}
+}

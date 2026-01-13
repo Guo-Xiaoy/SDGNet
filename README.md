@@ -5,7 +5,6 @@
 
 This repository contains the official PyTorch implementation of **SDGNet**.
 
-> **📢 Note:** The pre-trained models and full model resources will be made publicly available upon the acceptance of the paper.
 **📢 Update:** To facilitate reproducibility during the review process, we have released the **pre-trained checkpoints** and a **minimal runnable demo (`demo-T.py`)** for immediate verification.
 
 **SDGNet** is a high-precision point cloud registration framework tailored for **industrial 3D measurement** and **robot hand-eye calibration** scenarios. Unlike general-purpose registration methods that prioritize video-rate speed, SDGNet is engineered to maximize **geometric accuracy** and **edge preservation** under the "stop-and-measure" operational mode typical in industrial automation.

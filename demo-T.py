@@ -30,7 +30,7 @@ class NgeNet_pipeline():
         if self.cuda:
             model = model.cuda()
             if os.path.exists(ckpt_path):
-                checkpoint = torch.load(ckpt_path)
+                checkpoint = torch.load(ckpt_path, weights_only=True)
                 state_dict = checkpoint
                 # 删除与 feature_transform 相关的权重
                 filtered_state_dict = {k: v for k, v in state_dict.items() if 'feature_transform' not in k}
@@ -39,7 +39,7 @@ class NgeNet_pipeline():
                 print("Loaded pre-trained model.")
         else:
             model.load_state_dict(
-                torch.load(ckpt_path, map_location=torch.device('cpu')))
+                torch.load(ckpt_path, map_location=torch.device('cpu'), weights_only=True))
         self.model = model
         self.config = config
         self.model.eval()
@@ -270,4 +270,3 @@ if __name__ == "__main__":
     generate_data(args, gt, num_runs=1)
 
    
-
