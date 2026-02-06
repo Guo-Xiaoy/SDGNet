@@ -1,11 +1,30 @@
 ﻿# SDGNet: Serialized Geometry-Guided Network for Point Cloud Registration
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Status](https://img.shields.io/badge/Status-Under%20Review-red)]()
+[![Status](https://img.shields.io/badge/Status-Published-brightgreen)]()
 
 This repository contains the official PyTorch implementation of **SDGNet**.
 
 **📢 Update:** To facilitate reproducibility during the review process, we have released the **pre-trained checkpoints** and a **minimal runnable demo (`demo-T.py`)** for immediate verification.
+
+## 📄 Paper
+This work has been published in *Neurocomputing*:
+
+**X. Guo**, B. Zhu, M. Chi, Y. Hu, Y. Wei, Q. Fang,  
+“A Serialized Geometry-Guided Registration Method with Beltrami Diffusion for 2D Laser Scanning in Industrial Robotic Measurement Application,”  
+*Neurocomputing*, vol. 673, 2026, 132897.  
+DOI: 10.1016/j.neucom.2026.132897
+### BibTeX
+@article{Guo2026SDGNet,
+  title   = {A Serialized Geometry-Guided Registration Method with Beltrami Diffusion for 2D Laser Scanning in Industrial Robotic Measurement Application},
+  author  = {Guo, Xiaoyu and Zhu, Bao and Chi, Meng and Hu, Yibo and Wei, Yanding and Fang, Qiang},
+  journal = {Neurocomputing},
+  volume  = {673},
+  year    = {2026},
+  pages   = {132897},
+  issn    = {0925-2312},
+  doi     = {10.1016/j.neucom.2026.132897}
+}
 
 **SDGNet** is a high-precision point cloud registration framework tailored for **industrial 3D measurement** and **robot hand-eye calibration** scenarios. Unlike general-purpose registration methods that prioritize video-rate speed, SDGNet is engineered to maximize **geometric accuracy** and **edge preservation** under the "stop-and-measure" operational mode typical in industrial automation.
 
